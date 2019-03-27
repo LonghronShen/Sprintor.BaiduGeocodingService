@@ -1,0 +1,34 @@
+os: Visual Studio 2019 Preview
+
+version: 1.0.0.{build}
+
+configuration:
+- Debug
+- Release
+
+platform: Any CPU
+
+init:
+- ps: $Env:LABEL = "CI" + $Env:APPVEYOR_BUILD_NUMBER.PadLeft(5, "0")
+
+install:
+- ps: Start-FileDownload 'https://dotnetcli.blob.core.windows.net/dotnet/beta/Installers/Latest/dotnet-dev-win-x64.latest.exe'
+- cmd: dotnet-dev-win-x64.latest.exe /quiet
+
+environment:
+  PATH: $(PATH);$(PROGRAMFILES)\dotnet\
+  ACCESSKEY:
+    secure: i0hrbroBVQmJ4Pr604YA4ZmUBsUbt9vyzXinzkPFTOF/I3QP6K2tZvZ6sD/9BhTL
+
+build_script:
+- appveyor-retry msbuild Sprintor.BaiduGeocodingService.sln /t:restore
+- msbuild Sprintor.BaiduGeocodingService.sln /p:Configuration=%CONFIGURATION% /p:VersionSuffix=%LABEL%
+
+test_script:
+- dotnet test test\Sprintor.BaiduGeocodingService.Tests\
+
+artifacts:
+- path: '**\*.nupkg'
+
+cache:
+- '%USERPROFILE%\.nuget\packages'
