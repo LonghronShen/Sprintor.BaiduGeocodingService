@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<TargetFrameworks>net20;net35;net40;net45;netstandard1.0;netstandard1.1;netstandard1.6;netstandard2.0;portable-net45+win8+wpa81;portable-net4+sl50+win8+wpa81+wp8</TargetFrameworks>
-    <VersionPrefix>1.0</VersionPrefix>
+    <VersionPrefix>1.0.1</VersionPrefix>
     <PackageId>Sprintor.BaiduGeocodingService</PackageId>
     <Description>A simple implementation for invoking the Baidu Geocoding Service.</Description>
 		<Company>Sprintor</Company>
@@ -43,10 +43,6 @@
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net35' ">
     <Reference Include="System.Net" />
-  </ItemGroup>
-
-  <ItemGroup Condition=" '$(TargetFramework)' != 'netstandard1.0' AND '$(TargetFramework)' != 'net20' AND '$(TargetFramework)' != 'net35' AND '$(TargetFramework)' != 'net40' AND '$(TargetFramework)' != 'portable-net4+sl50+win8+wpa81+wp8' ">
-    <PackageReference Include="System.Collections.Concurrent" Version="4.3.0" />
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
