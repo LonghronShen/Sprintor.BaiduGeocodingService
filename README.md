@@ -9,6 +9,7 @@ A simple implementation for invoking the **Baidu Geocoding Service**.
 
 This library helps supporting frameworks like:
 
+- .NET Framework 2.0
 - .NET Framework 3.5
 - .NET Framework 4.0
 - .NET Framework 4.7.1
